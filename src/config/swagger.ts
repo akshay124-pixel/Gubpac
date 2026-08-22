@@ -14,8 +14,10 @@ const options: swaggerJsdoc.Options = {
     },
     servers: [
       {
-        url: `http://localhost:${env.PORT}`,
-        description: 'Development server',
+        url: process.env.NODE_ENV === 'production' 
+          ? 'https://srv988392.hstgr.cloud/taskflow'
+          : `http://localhost:${env.PORT}`,
+        description: process.env.NODE_ENV === 'production' ? 'Production server' : 'Development server',
       },
     ],
     components: {
